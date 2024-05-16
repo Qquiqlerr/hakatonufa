@@ -20,7 +20,7 @@ func MustLoad() *Config {
 		panic("empty path")
 	}
 	var cfg Config
-	err := cleanenv.ReadConfig(path+"/config", &cfg)
+	err := cleanenv.ReadConfig(path, &cfg)
 	if err != nil {
 		panic(err)
 	}
