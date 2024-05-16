@@ -1,8 +1,8 @@
 package config
 
 import (
+	"flag"
 	"github.com/ilyakaznacheev/cleanenv"
-	"os"
 	"time"
 )
 
@@ -12,7 +12,9 @@ type Config struct {
 }
 
 func MustLoad() *Config {
-	path := os.Getenv("CONFIG_PATH")
+	var path string
+	flag.StringVar(&path, "config", "", "path to config file")
+	flag.Parse()
 	if path == "" {
 		panic("empty path")
 	}
