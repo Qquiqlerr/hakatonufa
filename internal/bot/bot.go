@@ -22,7 +22,10 @@ func StartBot(botchan chan dronozor2.PhotoRequest, admins []int) {
 			if err != nil {
 				fmt.Println(err.Error())
 			}
-			msg := tgbotapi.NewMessage(int64(val), fmt.Sprintf("coords: %s\ntime: %s\n", data.GetCords(), data.GetImageTS().AsTime().Local()))
+			msg := tgbotapi.NewMessage(int64(val), fmt.Sprintf("DRON DETECTED!!!\n"+
+				"coords: %s\n"+
+				"time: %s\n"+
+				"Sender: %s", data.GetCords(), data.GetImageTS().AsTime().Local(), data.GetPhone()))
 			_, err = bot.Send(msg)
 			if err != nil {
 				fmt.Println(err.Error())
