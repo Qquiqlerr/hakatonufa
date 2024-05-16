@@ -1,0 +1,30 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "obb.dronozor.v1;dronozor";
+option java_package = "obb.dronozor.v1";
+
+package dronozor;
+
+
+service Dronozor{
+  rpc SendPhoto (PhotoRequest) returns (google.protobuf.Empty) ;
+  rpc SendVideo (VideoRequest) returns (google.protobuf.Empty) ;
+}
+
+message PhotoRequest{
+  string phone = 1;
+  bytes image = 2;
+  google.protobuf.Timestamp imageTS = 3;
+  string cords = 4;
+  bool forced = 5;
+}
+
+message VideoRequest{
+  string phone = 1;
+  repeated bytes image = 2;
+  google.protobuf.Timestamp imageTS = 3;
+  string cords = 4;
+  bool forced = 5;
+}
