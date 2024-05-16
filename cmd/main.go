@@ -15,7 +15,7 @@ func main() {
 	cfg := config.MustLoad()
 	botchan := make(chan dronozor2.PhotoRequest, 1)
 	application := app.New(cfg.Port, botchan)
-	go bot.StartBot(botchan)
+	go bot.StartBot(botchan, cfg.AdminId)
 	go application.MustStart()
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM)

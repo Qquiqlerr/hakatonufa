@@ -23,6 +23,7 @@ func (s *ServerAPI) SendPhoto(ctx context.Context, req *dronozor2.PhotoRequest) 
 	if err := ValidateStruct(req); err != nil {
 		return nil, err
 	}
+	req.ImageTS = req.GetImageTS()
 	s.botchan <- *req
 	return &emptypb.Empty{}, nil
 }
